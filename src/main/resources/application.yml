@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: false
+  flyway:
+    enable: true
+  database:
+    driverClassName: org.postgresql.Driver
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    jdbcUrl: jdbc:postgresql://localhost:5432/postgres
+    platform: postgres
+    username: postgres
+    password: postgres
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+config:
+  services:
+    user: service
+    password: service
+    role: ${ROLE}
