@@ -15,7 +15,6 @@ class ProtocolHistoricController(
         private val protocolHistoricService: ProtocolHistoricService
 ) {
     @PostMapping
-    @PreAuthorize("hasAuthority('service')")
     fun postProtocolHistoric(@RequestBody protocolHistoryRequest: ProtocolHistoryRequest): ResponseEntity<Int> {
        try {
            protocolHistoricService.save(protocolHistoryRequest.toProtocolHistory())

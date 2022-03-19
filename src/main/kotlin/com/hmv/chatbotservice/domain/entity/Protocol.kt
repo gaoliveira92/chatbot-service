@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 
 
 data class Protocol (
-        var id: Int = 0,
         var protocol:String = RandonProtocol().protocol(),
+        var cpf: String,
         var startDateTime:LocalDateTime = LocalDateTime.now()
 )

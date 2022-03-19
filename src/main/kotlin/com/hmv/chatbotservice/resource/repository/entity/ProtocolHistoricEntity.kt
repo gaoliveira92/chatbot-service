@@ -10,6 +10,7 @@ import javax.persistence.*
 data class ProtocolHistoricEntity(
         @Id
         val id: String,
+        @Column(name="protocol_id")
         val protocol:String,
         val data: String,
         @Column(name="date_time")

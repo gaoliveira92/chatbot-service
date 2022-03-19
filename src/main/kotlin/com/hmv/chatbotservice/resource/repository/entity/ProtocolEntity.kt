@@ -9,21 +9,21 @@ import javax.persistence.*
 @Table(name="protocol")
 data class ProtocolEntity (
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Int,
-        val protocol:String = id.toString() + LocalDate.now().toString(),
+        @Column(name="protocol_id")
+        val protocol:String,
+        val cpf: String,
         @Column(name="start_date_time")
         val startDateTime: LocalDateTime
 )
 
 fun ProtocolEntity.toDomain() = Protocol(
-        id = id,
         protocol = protocol,
+        cpf = cpf,
         startDateTime = startDateTime
 )
 
 fun Protocol.toEntity() = ProtocolEntity(
-        id = id,
         protocol = protocol,
+        cpf = cpf,
         startDateTime = startDateTime
 )

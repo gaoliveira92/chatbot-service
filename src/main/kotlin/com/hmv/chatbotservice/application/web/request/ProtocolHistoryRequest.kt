@@ -4,13 +4,14 @@ import com.hmv.chatbotservice.domain.entity.ProtocolHistoric
 import java.time.LocalDateTime
 
 data class ProtocolHistoryRequest (
+        val protocol: String,
         val queryResult:QueryResultRequest,
         val responseId: String
         )
 data class QueryResultRequest(
         val allRequiredParamsPresent:String,
-        val fullfilmentMessages: String,
-        val fullfilmentText:String,
+        val fulfillmentMessages: String,
+        val fulfillmentText:String,
         val intent : IntentRequest,
         val intentDetectionConfidence: String,
         val languageCode: String,
@@ -32,8 +33,8 @@ data class ParametersRequest(
 
 fun ProtocolHistoryRequest.toProtocolHistory() = ProtocolHistoric(
         id = responseId,
-        protocol = "",
-        data = "Chatbot: ${queryResult.fullfilmentText} no Display: ${queryResult.intent.displayName}, " +
+        protocol = protocol,
+        data = "Chatbot: ${queryResult.fulfillmentText} no Display: ${queryResult.intent.displayName}, " +
                 "Usuario: ${queryResult.queryText} ",
         dateTime = LocalDateTime.now()
 )
