@@ -14,4 +14,8 @@ class ProtocolHistoricRepositoryImpl (
         return jpa.save(protocolHistoric.toEntity()).toDomain()
     }
 
+    override fun findByProtocol(protocolList: List<String>): List<ProtocolHistoric> {
+        return jpa.findAllByProtocol(protocolList)?.map{ it.toDomain() }?: listOf()
+    }
+
 }

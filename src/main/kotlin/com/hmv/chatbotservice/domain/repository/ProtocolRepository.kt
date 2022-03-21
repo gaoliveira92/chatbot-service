@@ -5,4 +5,5 @@ import java.time.LocalDateTime
 
 interface ProtocolRepository {
     fun generateProtocol(protocol: Protocol): Protocol
+    fun findByCPF(cpf: String): List<Protocol>
 }

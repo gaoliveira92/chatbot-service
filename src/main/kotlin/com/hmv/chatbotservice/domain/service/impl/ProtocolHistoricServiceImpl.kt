@@ -12,4 +12,8 @@ class ProtocolHistoricServiceImpl(
     override fun save(protocolHistoric: ProtocolHistoric): ProtocolHistoric {
         return protocolHistoricRepository.save(protocolHistoric)
     }
+
+    override fun findByProtocol(protocolList: List<String>): List<ProtocolHistoric> {
+        return protocolHistoricRepository.findByProtocol(protocolList)
+    }
 }

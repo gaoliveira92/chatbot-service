@@ -13,4 +13,8 @@ class ProtocolRepositoryImpl(
     override fun generateProtocol(protocol :Protocol): Protocol {
         return jpa.save(protocol.toEntity()).toDomain()
     }
+
+    override fun findByCPF(cpf: String): List<Protocol> {
+        return jpa.findByCPF(cpf)?.map{ it.toDomain() }?: listOf()
+    }
 }

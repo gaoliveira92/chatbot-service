@@ -20,6 +20,6 @@ spring:
 
 config:
   services:
-    user: service
-    password: service
+    user: ${USER}
+    password: ${PASSWORD}
     role: ${ROLE}
