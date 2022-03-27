@@ -2,6 +2,7 @@ package com.hmv.chatbotservice.resource.repository
 
 import com.hmv.chatbotservice.domain.entity.ProtocolHistoric
 import com.hmv.chatbotservice.domain.repository.ProtocolHistoricRepository
+import io.mockk.mockk
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

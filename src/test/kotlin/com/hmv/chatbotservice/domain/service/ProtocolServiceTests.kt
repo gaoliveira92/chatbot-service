@@ -42,4 +42,28 @@ class ProtocolServiceTests {
 
         Assertions.assertEquals(3, result.protocolHistoric.size)
     }
+
+    @Test
+    fun `should not find procotol by cpf`(){
+        val protocolHistoricService = ProtocolHistoricServiceImpl(protocolHistoricRepository)
+        var protocolService = ProtocolServiceImpl(protocolHistoricService,protocolRepository)
+        every { protocolRepository.findByCPF(any())} returns listOf()
+        every { protocolHistoricRepository.findByProtocol(any())} returns listOf()
+
+        val result = protocolService.findByCPF("32036748932")
+
+        Assertions.assertEquals(0, result.protocolHistoric.size)
+    }
+
+    @Test
+    fun `should generate protocol successfully`(){
+        val protocolHistoricService = ProtocolHistoricServiceImpl(protocolHistoricRepository)
+        var protocolService = ProtocolServiceImpl(protocolHistoricService,protocolRepository)
+
+        every {protocolRepository.generateProtocol(any())} returns ProtocolFakeData().get()
+
+        val newProtocol = protocolService.generateProtocol(ProtocolFakeData().get())
+
+        Assertions.assertEquals(ProtocolFakeData().get().cpf, newProtocol.cpf)
+    }
 }

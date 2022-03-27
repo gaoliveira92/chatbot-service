@@ -35,18 +35,19 @@ dependencies {
 	implementation("io.springfox:springfox-swagger-ui:2.9.2")
 	implementation("io.springfox:springfox-swagger2:2.9.2")
 	implementation("org.flywaydb:flyway-core:8.5.4")
-	implementation("org.springframework.cloud:spring-cloud-stream")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
+
 	runtimeOnly("org.postgresql:postgresql")
+	testImplementation ("org.junit.jupiter:junit-jupiter")
 	testImplementation ("io.mockk:mockk:1.9.3")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test"){
+		exclude(group= "org.junit.vintage", module ="junit-vintage-engine")
+	}
 	testImplementation("org.mock-server:mockserver-client-java:5.9.0")
 	testImplementation("org.mock-server:mockserver-netty:5.9.0")
-	testImplementation("org.springframework.cloud:spring-cloud-stream")
 	testImplementation (group= "com.h2database", name= "h2", version= "1.4.200")
 }
-
 
 val excludesPath:Iterable<String> = listOf(
 
